@@ -6,5 +6,5 @@ phases:
       - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 900102140601.dkr.ecr.eu-central-1.amazonaws.com
   build:
     commands:
-      - docker build -t 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209 .
-      - docker push 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209
+      - docker build -t 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209:$CODEBUILD_RESOLVED_SOURCE_VERSION .
+      - docker push 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209:$CODEBUILD_RESOLVED_SOURCE_VERSION
