@@ -1,7 +1,10 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 900102140601.dkr.ecr.eu-central-1.amazonaws.com
   build:
     commands:
-      - ls -las
-      - echo "CIAO"
+      - docker build -t 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209 .
+      - docker push 900102140601.dkr.ecr.eu-central-1.amazonaws.com/workshop-220209
